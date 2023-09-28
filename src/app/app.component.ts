@@ -34,7 +34,7 @@ export class AppComponent {
   addPartner(
     dni: string,
     direccion: string,
-    tlf: string,
+    tIf: string,
     nombre: string,
     apellidos: string
   ) {
@@ -44,13 +44,14 @@ export class AppComponent {
         {
           dni,
           direccion,
-          tlf,
+          tIf,
           nombre,
           apellidos,
         },
         httpOptions
       )
       .subscribe((data) => (this.partners = data));
+      location.reload();
   }
 
   getAllPartners() {

@@ -1,29 +1,31 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000;
 
 // Permitir solicitudes CORS desde Angular
 app.use(cors());
+app.use(bodyParser.json());
 
 // Conexión a MySQL
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
-  database: "db_library",
+  user: "root", // Seleccionar tu user de MySQL
+  password: "root", //Seleccionar tu contraseña de MySQL
+  database: "library",
 });
 
 connection.connect();
 
 app.post("/socios", (req, res) => {
-  const [dni, direccion, tIf, nombre, apellidos] = req.body;
+  console.log(req.body);
+  const {dni, direccion, tIf, nombre, apellidos} = req.body;
   connection.query(
-    `INSERT INTO socios (dni, direccion,tIf,nombre,apellidos) VALUES (${
-      (dni, direccion, tIf, nombre, apellidos)
-    })`,
+    `INSERT INTO socios (dni, direccion,tIf,nombre,apellidos) VALUES ('${
+      dni}', '${direccion}', '${tIf}', '${nombre}', '${apellidos}')`,
     (err, results) => {
       if (err) throw err;
       res.send(results);
