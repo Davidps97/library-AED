@@ -1,12 +1,18 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component } from '@angular/core';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   partners: any[] = [];
   rents: any[] = [];
   volumes: any[] = [];
@@ -32,7 +38,19 @@ export class AppComponent implements OnInit {
     nombre: string,
     apellidos: string
   ) {
-    this.http.post<any[]>('http://localhost:3000/socios', '');
+    this.http
+      .post<any[]>(
+        'http://localhost:3000/socios',
+        {
+          dni,
+          direccion,
+          tlf,
+          nombre,
+          apellidos,
+        },
+        httpOptions
+      )
+      .subscribe((data) => (this.partners = data));
   }
 
   getAllPartners() {

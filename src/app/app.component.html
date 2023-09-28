@@ -2,8 +2,38 @@
   <label>DNI:</label>
   <input type="text" id="dni" placeholder="Introduzca el DNI" #dni />
   <label>Nombre:</label>
-  <input type="text" placeholder="Introduzca el Nombre" />
-  <button type="button">Añadir Socio</button>
+  <input type="text" id="nombre" placeholder="Introduzca el Nombre" #nombre />
+  <label>Apellidos:</label>
+  <input
+    type="text"
+    id="apellidos"
+    placeholder="Introduzca los apellidos"
+    #apellidos
+  />
+  <label>Direccion:</label>
+  <input
+    type="text"
+    id="direcion"
+    placeholder="Introduzca la direccion"
+    #direccion
+  />
+  <label>Telefono:</label>
+  <input type="text" id="tlf" placeholder="Introduzca el Telefono" #tlf />
+
+  <button
+    type="button"
+    (click)="
+      addPartner(
+        dni.value,
+        direccion.value,
+        tlf.value,
+        nombre.value,
+        apellidos.value
+      )
+    "
+  >
+    Añadir Socio
+  </button>
 </form>
 
 <div>

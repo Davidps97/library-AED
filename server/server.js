@@ -12,11 +12,24 @@ app.use(cors());
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "Aridanejdr090503",
   database: "db_library",
 });
 
 connection.connect();
+
+app.post("/socios", (req, res) => {
+  const [dni, direccion, tIf, nombre, apellidos] = req.body;
+  connection.query(
+    `INSERT INTO socios (dni, direccion,tIf,nombre,apellidos) VALUES (${
+      (dni, direccion, tIf, nombre, apellidos)
+    })`,
+    (err, results) => {
+      if (err) throw err;
+      res.send(results);
+    }
+  );
+});
 
 app.get("/socios", (req, res) => {
   connection.query("SELECT * FROM socios", (err, results) => {
