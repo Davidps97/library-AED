@@ -1,0 +1,80 @@
+<form>
+  <label>DNI:</label>
+  <input type="text" id="dni" placeholder="Introduzca el DNI" #dni />
+  <label>Nombre:</label>
+  <input type="text" placeholder="Introduzca el Nombre" />
+  <button type="button">Añadir Socio</button>
+</form>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let partner of partners">
+        <td>{{ partner.codigo_socio }}</td>
+        <td>{{ partner.nombre }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ID Socio</th>
+        <th>ID Volumen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rent of rents">
+        <td>{{ rent.codigo_socio }}</td>
+        <td>{{ rent.id_volumen }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ID volumen</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let volume of volumes">
+        <td>{{ volume.id }}</td>
+        <td>{{ volume.estado }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ID Libro</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let edit of edits">
+        <td>{{ edit.id_libro }}</td>
+        <td>{{ edit.ISBN }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ID Libro</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let edition of editions">
+        <td>{{ edition.ISBN }}</td>
+        <td>{{ edition.editorial }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
